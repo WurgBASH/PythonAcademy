@@ -1,4 +1,5 @@
 from telegram.ext import CommandHandler, MessageHandler, Filters, Updater,CallbackQueryHandler
+import telegram
 import os,sys
 
 TOKEN = "710118383:AAFJuBvAtwZ4yWvkjdmBGL6pZb6ocP4e0S4"
@@ -7,6 +8,7 @@ updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 
 l1_cqd = 'L1BUT'
+
 lesson1_button = telegram.InlineKeyboardButton(text='Як встановити Python?',callback_data=l1_cqd)
 
 def main_menu(bot, update):
@@ -35,7 +37,7 @@ def sendingAllLessons(bot,update):
 	bot.send_message(chat_id=update.message.chat_id, text=msg,
 							  parse_mode=telegram.ParseMode.HTML,
 							  reply_markup=telegram.InlineKeyboardMarkup([buts]))
-	
+
 	bot.send_message(chat_id=update.message.chat_id, reply_markup=kb_markup) 
 
 
