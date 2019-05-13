@@ -1,9 +1,4 @@
 from telegram.ext import CommandHandler, MessageHandler, Filters, Updater,CallbackQueryHandler
-import telegram
-import datetime
-from datetime import timedelta
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 import os,sys
 
 TOKEN = "710118383:AAFJuBvAtwZ4yWvkjdmBGL6pZb6ocP4e0S4"
