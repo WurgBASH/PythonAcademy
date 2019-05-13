@@ -28,6 +28,8 @@ def handle_message(bot, update):
 		sendingTestingMenu(bot,update)
 	elif update.message.text == 'Посилання на додаткові матеріали':
 		sendingAdditionalLinks(bot,update)
+	elif update.message.text == 'Повернутися до головного меню':
+		main_menu(bot, update)
 
 def sendingAllLessons(bot,update):
 	kb = [[telegram.KeyboardButton('Повернутися до головного меню')]]
@@ -38,7 +40,7 @@ def sendingAllLessons(bot,update):
 							  parse_mode=telegram.ParseMode.HTML,
 							  reply_markup=telegram.InlineKeyboardMarkup([buts]))
 
-	bot.send_message(chat_id=update.message.chat_id, reply_markup=kb_markup) 
+	bot.send_message(chat_id=update.message.chat_id, text='Для кращого вивчення потрібно прочитати всі уроки', reply_markup=kb_markup) 
 
 
 def sendingTestingMenu(bot,update):
