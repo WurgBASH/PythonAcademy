@@ -10,7 +10,7 @@ dispatcher = updater.dispatcher
 l1_cqd = 'L1BUT'
 
 #lesson1_button = telegram.InlineKeyboardButton(text='Як встановити Python?',callback_data=l1_cqd)
-lesson1_button = telegram.InlineKeyboardButton(text='Як встановити Python?',link="https://telegra.ph/YAk-vstanoviti-Python-05-13")
+lesson1_button = telegram.InlineKeyboardButton(text='Як встановити Python?',url="https://telegra.ph/YAk-vstanoviti-Python-05-13")
 
 def main_menu(bot, update):
 	kb = [[telegram.KeyboardButton('Список уроків')],
