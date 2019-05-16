@@ -12,7 +12,7 @@ l2_cqd = 'L2BUT'
 
 #lesson1_button = telegram.InlineKeyboardButton(text='Як встановити Python?',callback_data=l1_cqd)
 lesson1_button = telegram.InlineKeyboardButton(text='Як встановити Python?',url="https://telegra.ph/YAk-vstanoviti-Python-05-13")
-lesson2_button = telegram.InlineKeyboardButton(text='Як встановити Python?',url="https://telegra.ph/Osnovi-Python-05-16")
+lesson2_button = telegram.InlineKeyboardButton(text='Основи Python',url="https://telegra.ph/Osnovi-Python-05-16")
 
 def main_menu(bot, update):
 	kb = [[telegram.KeyboardButton('Список уроків')],
