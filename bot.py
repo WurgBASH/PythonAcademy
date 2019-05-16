@@ -41,7 +41,7 @@ def sendingAllLessons(bot,update):
 	msg = '<b>Натисни на урок, який ти хочеш вивчити</b>\n'
 	bot.send_message(chat_id=update.message.chat_id, text=msg,
 							  parse_mode=telegram.ParseMode.HTML,
-							  reply_markup=telegram.InlineKeyboardMarkup([buts],[[lesson2_button]]))
+							  reply_markup=telegram.InlineKeyboardMarkup([buts,[lesson2_button]]))
 
 	bot.send_message(chat_id=update.message.chat_id, text='Для кращого вивчення потрібно прочитати всі уроки', reply_markup=kb_markup) 
 
