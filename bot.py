@@ -8,9 +8,11 @@ updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 
 l1_cqd = 'L1BUT'
+l2_cqd = 'L2BUT'
 
 #lesson1_button = telegram.InlineKeyboardButton(text='Як встановити Python?',callback_data=l1_cqd)
 lesson1_button = telegram.InlineKeyboardButton(text='Як встановити Python?',url="https://telegra.ph/YAk-vstanoviti-Python-05-13")
+lesson2_button = telegram.InlineKeyboardButton(text='Як встановити Python?',url="https://telegra.ph/Osnovi-Python-05-16")
 
 def main_menu(bot, update):
 	kb = [[telegram.KeyboardButton('Список уроків')],
@@ -39,7 +41,7 @@ def sendingAllLessons(bot,update):
 	msg = '<b>Натисни на урок, який ти хочеш вивчити</b>\n'
 	bot.send_message(chat_id=update.message.chat_id, text=msg,
 							  parse_mode=telegram.ParseMode.HTML,
-							  reply_markup=telegram.InlineKeyboardMarkup([buts]))
+							  reply_markup=telegram.InlineKeyboardMarkup([buts],[[lesson2_button]]))
 
 	bot.send_message(chat_id=update.message.chat_id, text='Для кращого вивчення потрібно прочитати всі уроки', reply_markup=kb_markup) 
 
