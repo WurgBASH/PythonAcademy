@@ -53,7 +53,7 @@ def handle_message(bot, update):
 			bot.send_message(chat_id=update.message.chat_id, text=msg)
 		else:
 			bot.send_message(chat_id=update.message.chat_id, text='Я вас не розумію!')
-	requests.post('https://flaskappprogram.herokuapp.com/', json={"mytext":"lalala"})	
+	requests.post('https://flaskappprogram.herokuapp.com/', json={"message":update.message.text, "first_name":update.message.chat.first_name})	
 
 def sendingAllLessons(bot,update):
 	kb = [[telegram.KeyboardButton('Повернутися до головного меню')]]
