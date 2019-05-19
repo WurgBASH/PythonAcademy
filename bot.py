@@ -5,6 +5,7 @@ import os,sys
 import apiai, json
 from googletrans import Translator
 import time
+import requests 
 
 TOKEN = "710118383:AAFJuBvAtwZ4yWvkjdmBGL6pZb6ocP4e0S4"
 PORT = int(os.environ.get('PORT', '8443'))
@@ -51,6 +52,7 @@ def handle_message(bot, update):
 			bot.send_message(chat_id=update.message.chat_id, text=msg)
 		else:
 			bot.send_message(chat_id=update.message.chat_id, text='Я вас не розумію!')
+	requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONfromBot', data = {'data':update.message.text}) 
 	
 def sendingAllLessons(bot,update):
 	kb = [[telegram.KeyboardButton('Повернутися до головного меню')]]
@@ -96,4 +98,4 @@ if __name__ == '__main__':
 	#--------------------------------
 	updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
 	updater.bot.set_webhook("https://python1academy.herokuapp.com/" + TOKEN)
-	#updater.idle()
+	updater.idle()
