@@ -5,7 +5,6 @@ import os,sys
 import apiai, json
 from googletrans import Translator
 import time
-import requests
 
 TOKEN = "710118383:AAFJuBvAtwZ4yWvkjdmBGL6pZb6ocP4e0S4"
 PORT = int(os.environ.get('PORT', '8443'))
@@ -32,7 +31,6 @@ def main_menu(bot, update):
 					reply_markup=kb_markup) 
 
 def handle_message(bot, update):
-
 	if update.message.text == 'Список уроків':
 		sendingAllLessons(bot, update)
 	elif update.message.text == 'Тестування':
@@ -53,8 +51,7 @@ def handle_message(bot, update):
 			bot.send_message(chat_id=update.message.chat_id, text=msg)
 		else:
 			bot.send_message(chat_id=update.message.chat_id, text='Я вас не розумію!')
-	requests.post('https://flaskappprogram.herokuapp.com/', json={"message":update.message.text, "first_name":update.message.chat.first_name})	
-
+	
 def sendingAllLessons(bot,update):
 	kb = [[telegram.KeyboardButton('Повернутися до головного меню')]]
 	kb_markup = telegram.ReplyKeyboardMarkup(kb, resize_keyboard=True)
