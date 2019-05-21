@@ -29,21 +29,24 @@ def main_menu(bot, update):
 
 	bot.send_message(chat_id=update.message.chat_id,
 					text="Ти хочеш вивчачи Python?",
-					reply_markup=kb_markup) 
+					reply_markup=kb_markup)
+	tmp = update
+	tmp.message.text= 'Відправив головне меню'
+	sendJSON(tmp,True) 
 
 def handle_message(bot, update):
 	if update.message.text == 'Список уроків':
 		sendingAllLessons(bot, update)
-		sendJSON(update)
+		sendJSON(update,False)
 	elif update.message.text == 'Тестування':
 		sendingTestingMenu(bot,update)
-		sendJSON(update)
+		sendJSON(update,False)
 	elif update.message.text == 'Посилання на додаткові матеріали':
 		sendingAdditionalLinks(bot,update)
-		sendJSON(update)
+		sendJSON(update,False)
 	elif update.message.text == 'Повернутися до головного меню':
 		main_menu(bot, update)
-		sendJSON(update)
+		sendJSON(update,False)
 	else:
 		request = apiai.ApiAI('a60c7793525a40ac9b5876bfef6590d3').text_request() 
 		request.lang = 'ru' 
@@ -54,10 +57,16 @@ def handle_message(bot, update):
 		msg = translator.translate(response, dest='ukrainian',src='ru').text
 		if response:
 			bot.send_message(chat_id=update.message.chat_id, text=msg)
-			sendJSON(update)
+			sendJSON(update,False)
+			tmp = update
+			tmp.message.text= msg
+			sendJSON(tmp,True)
 		else:
 			bot.send_message(chat_id=update.message.chat_id, text='Я вас не розумію!')
-			sendJSON(update)
+			sendJSON(update,False)
+			tmp = update
+			tmp.message.text= 'Я вас не розумію!'
+			sendJSON(tmp,True)
 
 def sendJSON(update, bot):
 	if bot:
@@ -79,6 +88,9 @@ def sendingAllLessons(bot,update):
 							  reply_markup=telegram.InlineKeyboardMarkup(buts))
 
 	bot.send_message(chat_id=update.message.chat_id, text='Для кращого вивчення потрібно прочитати всі уроки', reply_markup=kb_markup) 
+	tmp = update
+	tmp.message.text= 'Відправив меню уроків'
+	sendJSON(tmp,True)
 
 
 def sendingTestingMenu(bot,update):
@@ -86,12 +98,18 @@ def sendingTestingMenu(bot,update):
 	kb_markup = telegram.ReplyKeyboardMarkup(kb, resize_keyboard=True)
 	bot.send_message(chat_id=update.message.chat_id, text='Цей модуль ще не написаний',
 					reply_markup=kb_markup) 
+	tmp = update
+	tmp.message.text= 'Відправив меню тестів'
+	sendJSON(tmp,True)
 
 def sendingAdditionalLinks(bot,update):
 	kb = [[telegram.KeyboardButton('Повернутися до головного меню')]]
 	kb_markup = telegram.ReplyKeyboardMarkup(kb, resize_keyboard=True)
 	bot.send_message(chat_id=update.message.chat_id, text='Цей модуль ще не написаний',
 					reply_markup=kb_markup) 
+	tmp = update
+	tmp.message.text= 'Відправив посилання'
+	sendJSON(tmp,True)
 
 
 def callback_query_handler(bot, update):
