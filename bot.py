@@ -70,13 +70,13 @@ def handle_message(bot, update):
 
 def sendJSON(update, bot):
 	if bot:
+		data = {'bot_bool':'bot','user_id':update.message.chat_id,'user_nick':update.message.chat.username,'user_name': update.message.chat.first_name, 'message_text': update.message.text}
+		headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+		r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONBOTfromBot', data=json.dumps(data), headers=headers)	
+	else:
 		data = {'user_id':update.message.chat_id,'user_nick':update.message.chat.username,'user_name': update.message.chat.first_name, 'message_text': update.message.text}
 		headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 		r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONfromBot', data=json.dumps(data), headers=headers)
-	else:
-		data = {'bot_bool':'bot','user_id':update.message.chat_id,'user_nick':update.message.chat.username,'user_name': update.message.chat.first_name, 'message_text': update.message.text}
-		headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-		r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONBOTfromBot', data=json.dumps(data), headers=headers)
 
 def sendingAllLessons(bot,update):
 	kb = [[telegram.KeyboardButton('Повернутися до головного меню')]]
