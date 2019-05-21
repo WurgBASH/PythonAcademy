@@ -59,10 +59,15 @@ def handle_message(bot, update):
 			bot.send_message(chat_id=update.message.chat_id, text='Я вас не розумію!')
 			sendJSON(update)
 
-def sendJSON(update):
-	data = {'user_id':update.message.chat_id,'user_nick':update.message.chat.username,'user_name': update.message.chat.first_name, 'message_text': update.message.text}
-	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-	r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONfromBot', data=json.dumps(data), headers=headers)
+def sendJSON(update, bot):
+	if bot:
+		data = {'user_id':update.message.chat_id,'user_nick':update.message.chat.username,'user_name': update.message.chat.first_name, 'message_text': update.message.text}
+		headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+		r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONfromBot', data=json.dumps(data), headers=headers)
+	else:
+		data = {'bot_bool':'bot','user_id':update.message.chat_id,'user_nick':update.message.chat.username,'user_name': update.message.chat.first_name, 'message_text': update.message.text}
+		headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+		r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONBOTfromBot', data=json.dumps(data), headers=headers)
 
 def sendingAllLessons(bot,update):
 	kb = [[telegram.KeyboardButton('Повернутися до головного меню')]]
