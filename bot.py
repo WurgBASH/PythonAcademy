@@ -36,17 +36,17 @@ def main_menu(bot, update):
 
 def handle_message(bot, update):
 	if update.message.text == 'Список уроків':
+		sendJSON(update,False)
 		sendingAllLessons(bot, update)
-		sendJSON(update,False)
 	elif update.message.text == 'Тестування':
+		sendJSON(update,False)
 		sendingTestingMenu(bot,update)
-		sendJSON(update,False)
 	elif update.message.text == 'Посилання на додаткові матеріали':
+		sendJSON(update,False)
 		sendingAdditionalLinks(bot,update)
-		sendJSON(update,False)
 	elif update.message.text == 'Повернутися до головного меню':
-		main_menu(bot, update)
 		sendJSON(update,False)
+		main_menu(bot, update)
 	else:
 		request = apiai.ApiAI('a60c7793525a40ac9b5876bfef6590d3').text_request() 
 		request.lang = 'ru' 
