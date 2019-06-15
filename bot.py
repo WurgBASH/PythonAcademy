@@ -185,7 +185,7 @@ def lesson2_testing(bot,update):
 	button_list = [
         [telegram.InlineKeyboardButton("Інтерпретована мова", callback_data="r_l2t11"),
          telegram.InlineKeyboardButton("Компільована мова", callback_data="f_l2t11")]]
-	update.effective_message.reply_text('Python - це?',reply_markup=InlineKeyboardMarkup(button_list))
+	update.effective_message.reply_text('Python - це?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
 
 	return LS1_TEST1
 
@@ -195,9 +195,9 @@ def lesson2_test_handler(bot,update):
         [telegram.InlineKeyboardButton("Так", callback_data="r_l2t11"),
          telegram.InlineKeyboardButton("Ні", callback_data="f_l2t11")]]
 	if query_data == 'r_l2t11':
-		update.effective_message.reply_text('Ви відповили вірно \nЧи потрібно вказувати тип даних при створенні змінної?',reply_markup=InlineKeyboardMarkup(button_list))
+		update.effective_message.reply_text('Ви відповили вірно \nЧи потрібно вказувати тип даних при створенні змінної?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
 	elif query_data == 'f_l2t11':
-		update.effective_message.reply_text('Ви відповили невірно \nЧи потрібно вказувати тип даних при створенні змінної?',reply_markup=InlineKeyboardMarkup(button_list))
+		update.effective_message.reply_text('Ви відповили невірно \nЧи потрібно вказувати тип даних при створенні змінної?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
 	user_data['selection'] = query_data
 	return LS1_TEST2
 
