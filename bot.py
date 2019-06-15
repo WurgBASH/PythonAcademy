@@ -201,6 +201,9 @@ def lesson2_test_handler(bot,update):
 	user_data['selection'] = query_data
 	return LS1_TEST2
 
+def cancel_testing(bot,update):
+	update.effective_message.reply_text('Тест завершено')
+	return ConversationHandler.END
 
 test2_conv_handler = ConversationHandler(
         entry_points=[CommandHandler('lesson2_testing', lesson2_testing)],
@@ -208,6 +211,7 @@ test2_conv_handler = ConversationHandler(
             LS1_TEST1: [CallbackQueryHandler(lesson2_test_handler, pass_user_data=True)],
             LS1_TEST2: [CallbackQueryHandler(lesson2_test_handler, pass_user_data=True)],
         },
+        fallbacks=[CommandHandler('cancel_testing', cancel_testing)]
 )
 
 def callback_query_handler(bot, update):
