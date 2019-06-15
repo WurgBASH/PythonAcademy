@@ -183,8 +183,8 @@ def sendingAdditionalLinks(bot,update):
 
 def lesson2_testing(bot,update):
 	button_list = [
-        [InlineKeyboardButton("Інтерпретована мова", callback_data="r_l2t11"),
-         InlineKeyboardButton("Компільована мова", callback_data="f_l2t11")]]
+        [telegram.InlineKeyboardButton("Інтерпретована мова", callback_data="r_l2t11"),
+         telegram.InlineKeyboardButton("Компільована мова", callback_data="f_l2t11")]]
 	update.effective_message.reply_text('Python - це?',reply_markup=InlineKeyboardMarkup(button_list))
 
 	return LS1_TEST1
@@ -192,8 +192,8 @@ def lesson2_testing(bot,update):
 def lesson2_test_handler(bot,update):
 	query_data = update.callback_query.data
 	button_list = [
-        [InlineKeyboardButton("Так", callback_data="r_l2t11"),
-         InlineKeyboardButton("Ні", callback_data="f_l2t11")]]
+        [telegram.InlineKeyboardButton("Так", callback_data="r_l2t11"),
+         telegram.InlineKeyboardButton("Ні", callback_data="f_l2t11")]]
 	if query_data == 'r_l2t11':
 		update.effective_message.reply_text('Ви відповили вірно \nЧи потрібно вказувати тип даних при створенні змінної?',reply_markup=InlineKeyboardMarkup(button_list))
 	elif query_data == 'f_l2t11':
