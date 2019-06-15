@@ -201,14 +201,14 @@ def lesson2_test_handler(bot,update):
 	user_data['selection'] = query_data
 	return LS1_TEST2
 
-def build_conversation_handler():
-	conversation_handler = ConversationHandler(
+
+test2_conv_handler = ConversationHandler(
         entry_points=[CommandHandler('lesson2_testing', lesson2_testing)],
         states={
             LS1_TEST1: [CallbackQueryHandler(lesson2_test_handler, pass_user_data=True)],
             LS1_TEST2: [CallbackQueryHandler(lesson2_test_handler, pass_user_data=True)],
         },
-	)
+)
 
 def callback_query_handler(bot, update):
 	cqd = update.callback_query.data
@@ -243,7 +243,7 @@ def callback_query_handler(bot, update):
 	elif cqd = 'l3tb':
 		pass
 
-
+dispatcher.add_handler(test2_conv_handler)
 dispatcher.add_handler(CommandHandler('start', main_menu))
 
 
