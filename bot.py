@@ -139,8 +139,18 @@ def sendingTestingMenu(bot,update):
 def sendingAdditionalLinks(bot,update):
 	kb = [[telegram.KeyboardButton('Повернутися до головного меню')]]
 	kb_markup = telegram.ReplyKeyboardMarkup(kb, resize_keyboard=True)
-	bot.send_message(chat_id=update.message.chat_id, text='Цей модуль ще не написаний',
-					reply_markup=kb_markup) 
+	links1_button = telegram.InlineKeyboardButton(text='ПИТОНТЬЮТОР',url='http://pythontutor.ru/')
+	links2_button = telegram.InlineKeyboardButton(text='Python. Youtube курс.',url='https://www.youtube.com/playlist?list=PL-_cKNuVAYAXkJLFpu-dq3nphjftOOR6C')
+	links3_button = telegram.InlineKeyboardButton(text='Python.org',url='https://www.python.org/')
+	
+	buts =[[links1_button],[links2_button],[links3_button]]
+
+	msg = '<b>Корисні посилання</b>\n'
+	bot.send_message(chat_id=update.message.chat_id, text=msg,
+							  parse_mode=telegram.ParseMode.HTML,
+							  reply_markup=telegram.InlineKeyboardMarkup(buts))
+
+	bot.send_message(chat_id=update.message.chat_id, text='Цей розділ буде доповнюватися', reply_markup=kb_markup) 
 	tmp = update
 	tmp.message.text= 'Відправив посилання'
 	sendJSON(tmp,True)
