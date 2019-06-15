@@ -206,7 +206,7 @@ def cancel_testing(bot,update):
 	return ConversationHandler.END
 
 test2_conv_handler = ConversationHandler(
-        entry_points=[CommandHandler('lesson2_testing', lesson2_testing)],
+        entry_points=[CallbackQueryHandler(callback_query_handler)],
         states={
             LS1_TEST1: [CallbackQueryHandler(lesson2_test_handler, pass_user_data=True)],
             LS1_TEST2: [CallbackQueryHandler(lesson2_test_handler, pass_user_data=True)],
@@ -217,7 +217,12 @@ test2_conv_handler = ConversationHandler(
 def callback_query_handler(bot, update):
 	cqd = update.callback_query.data
 	if cqd == 'l2tb':
-		lesson2_testing(bot,update)
+		button_list = [
+        [telegram.InlineKeyboardButton("Інтерпретована мова", callback_data="r_l2t11"),
+         telegram.InlineKeyboardButton("Компільована мова", callback_data="f_l2t11")]]
+		update.effective_message.reply_text('Python - це?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		
+		return LS1_TEST1
 	elif cqd == 'l3tb':
 		pass
 	elif cqd == 'l3tb':
