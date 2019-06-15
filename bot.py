@@ -214,33 +214,33 @@ def callback_query_handler(bot, update):
 	cqd = update.callback_query.data
 	if cqd == 'l2tb':
 		lesson2_testing(bot,update)
-	elif cqd = 'l3tb':
+	elif cqd == 'l3tb':
 		pass
-	elif cqd = 'l3tb':
+	elif cqd == 'l3tb':
 		pass
-	elif cqd = 'l3tb':
+	elif cqd == 'l3tb':
 		pass
-	elif cqd = 'l3tb':
+	elif cqd == 'l3tb':
 		pass
-	elif cqd = 'l3tb':
+	elif cqd == 'l3tb':
 		pass
-	elif cqd = 'l3tb':
+	elif cqd == 'l3tb':
 		pass
-	elif cqd = 'l3tb':
+	elif cqd == 'l3tb':
 		pass
-	elif cqd = 'l3tb':
+	elif cqd == 'l3tb':
 		pass
-	elif cqd = 'l3tb':
+	elif cqd == 'l3tb':
 		pass
-	elif cqd = 'l3tb':
+	elif cqd == 'l3tb':
 		pass
-	elif cqd = 'l3tb':
+	elif cqd == 'l3tb':
 		pass
-	elif cqd = 'l3tb':
+	elif cqd == 'l3tb':
 		pass
-	elif cqd = 'l3tb':
+	elif cqd == 'l3tb':
 		pass
-	elif cqd = 'l3tb':
+	elif cqd == 'l3tb':
 		pass
 
 dispatcher.add_handler(test2_conv_handler)
