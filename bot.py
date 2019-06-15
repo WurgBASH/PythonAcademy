@@ -14,6 +14,8 @@ updater = Updater(token=TOKEN)
 dispatcher = updater.dispatcher
 translator = Translator()
 
+LS1_TEST1, LS1_TEST2, LS1_TEST3, LS1_TEST4 = range(4)
+
 lessons_url = ['https://telegra.ph/YAk-vstanoviti-Python-05-13',
 'https://telegra.ph/Osnovi-Python-05-16',
 'https://telegra.ph/Spiski-v-Python-05-17',
@@ -49,6 +51,21 @@ lesson14_button = telegram.InlineKeyboardButton(text='Вийнятки в Python
 lesson15_button = telegram.InlineKeyboardButton(text='Перехід на python 3. Установка мови і вибір IDE',url=lessons_url[14])
 lesson16_button = telegram.InlineKeyboardButton(text='Робота з базою даних SQLIte',url=lessons_url[15])
 
+lesson2_test_button = telegram.InlineKeyboardButton(text='Основи Python',callback_data='l2tb')
+lesson3_test_button = telegram.InlineKeyboardButton(text='Списки в Python',callback_data='l3tb')
+lesson4_test_button = telegram.InlineKeyboardButton(text='Кортежі в Python',callback_data='l4tb')
+lesson5_test_button = telegram.InlineKeyboardButton(text='Цикл for і оператори розгалуження в Python',callback_data='l5tb')
+lesson6_test_button = telegram.InlineKeyboardButton(text='Словники в Python',callback_data='l6tb')
+lesson7_test_button = telegram.InlineKeyboardButton(text='Цикл while. Switch, Continue і Вreak в Python',callback_data='l7tb')
+lesson8_test_button = telegram.InlineKeyboardButton(text='Робота з форматами типів даних, або що таке %s, %d і т.д. в Python',callback_data='l8tb')
+lesson9_test_button = telegram.InlineKeyboardButton(text='Функції в Python',callback_data='l9tb')
+lesson10_test_button = telegram.InlineKeyboardButton(text='Функціональне програмування. Лямбда функції.',callback_data='l10tb')
+lesson11_test_button = telegram.InlineKeyboardButton(text='Робота з файлами',callback_data='l11tb')
+lesson12_test_button = telegram.InlineKeyboardButton(text='Об\'єктно-орієнтоване програмування',callback_data='l12tb')
+lesson13_test_button = telegram.InlineKeyboardButton(text='ООП. Спадкування',callback_data='l13tb')
+lesson14_test_button = telegram.InlineKeyboardButton(text='Вийнятки в Python',callback_data='l14tb')
+lesson15_test_button = telegram.InlineKeyboardButton(text='Перехід на python 3. Установка мови і вибір IDE',callback_data='l15tb')
+lesson16_test_button = telegram.InlineKeyboardButton(text='Робота з базою даних SQLIte',callback_data='l16tb')
 
 
 def main_menu(bot, update):
@@ -130,8 +147,17 @@ def sendingAllLessons(bot,update):
 def sendingTestingMenu(bot,update):
 	kb = [[telegram.KeyboardButton('Повернутися до головного меню')]]
 	kb_markup = telegram.ReplyKeyboardMarkup(kb, resize_keyboard=True)
-	bot.send_message(chat_id=update.message.chat_id, text='Цей модуль ще не написаний',
-					reply_markup=kb_markup) 
+
+	buts =[[lesson2_test_button],[lesson3_test_button],[lesson4_test_button],[lesson5_test_button],[lesson6_test_button],
+	[lesson7_test_button],[lesson8_test_button],[lesson9_test_button],[lesson10_test_button],[lesson11_test_button],[lesson12_test_button],
+	[lesson13_test_button],[lesson14_test_button],[lesson15_test_button],[lesson16_test_button]]
+
+	msg = '<b>Натисни на тест, який ти хочеш пройти</b>\n'
+	bot.send_message(chat_id=update.message.chat_id, text=msg,
+							  parse_mode=telegram.ParseMode.HTML,
+							  reply_markup=telegram.InlineKeyboardMarkup(buts))
+
+	bot.send_message(chat_id=update.message.chat_id, text='Ми робимо все можливе, щоб покращити цей розділ.', reply_markup=kb_markup) 
 	tmp = update
 	tmp.message.text= 'Відправив меню тестів'
 	sendJSON(tmp,True)
@@ -142,7 +168,7 @@ def sendingAdditionalLinks(bot,update):
 	links1_button = telegram.InlineKeyboardButton(text='ПИТОНТЬЮТОР',url='http://pythontutor.ru/')
 	links2_button = telegram.InlineKeyboardButton(text='Python. Youtube курс.',url='https://www.youtube.com/playlist?list=PL-_cKNuVAYAXkJLFpu-dq3nphjftOOR6C')
 	links3_button = telegram.InlineKeyboardButton(text='Python.org',url='https://www.python.org/')
-	
+
 	buts =[[links1_button],[links2_button],[links3_button]]
 
 	msg = '<b>Корисні посилання</b>\n'
@@ -155,12 +181,68 @@ def sendingAdditionalLinks(bot,update):
 	tmp.message.text= 'Відправив посилання'
 	sendJSON(tmp,True)
 
+def lesson2_testing(bot,update):
+	button_list = [
+        [InlineKeyboardButton("Інтерпретована мова", callback_data="r_l2t11"),
+         InlineKeyboardButton("Компільована мова", callback_data="f_l2t11")]]
+	update.effective_message.reply_text('Python - це?',reply_markup=InlineKeyboardMarkup(button_list))
+
+	return LS1_TEST1
+
+def lesson2_test_handler(bot,update):
+	query_data = update.callback_query.data
+	button_list = [
+        [InlineKeyboardButton("Так", callback_data="r_l2t11"),
+         InlineKeyboardButton("Ні", callback_data="f_l2t11")]]
+	if query_data == 'r_l2t11':
+		update.effective_message.reply_text('Ви відповили вірно \nЧи потрібно вказувати тип даних при створенні змінної?',reply_markup=InlineKeyboardMarkup(button_list))
+	elif query_data == 'f_l2t11':
+		update.effective_message.reply_text('Ви відповили невірно \nЧи потрібно вказувати тип даних при створенні змінної?',reply_markup=InlineKeyboardMarkup(button_list))
+	user_data['selection'] = query_data
+	return LS1_TEST2
+
+def build_conversation_handler():
+	conversation_handler = ConversationHandler(
+        entry_points=[CommandHandler('lesson2_testing', lesson2_testing)],
+        states={
+            LS1_TEST1: [CallbackQueryHandler(lesson2_test_handler, pass_user_data=True)],
+            LS1_TEST2: [CallbackQueryHandler(lesson2_test_handler, pass_user_data=True)],
+        },
+	)
 
 def callback_query_handler(bot, update):
 	cqd = update.callback_query.data
-	if cqd == l1_cqd:
-		bot.send_message(chat_id=update.callback_query.message.chat_id,
-					text="https://telegra.ph/YAk-vstanoviti-Python-05-13") 
+	if cqd == 'l2tb':
+		lesson2_testing(bot,update)
+	elif cqd = 'l3tb':
+		pass
+	elif cqd = 'l3tb':
+		pass
+	elif cqd = 'l3tb':
+		pass
+	elif cqd = 'l3tb':
+		pass
+	elif cqd = 'l3tb':
+		pass
+	elif cqd = 'l3tb':
+		pass
+	elif cqd = 'l3tb':
+		pass
+	elif cqd = 'l3tb':
+		pass
+	elif cqd = 'l3tb':
+		pass
+	elif cqd = 'l3tb':
+		pass
+	elif cqd = 'l3tb':
+		pass
+	elif cqd = 'l3tb':
+		pass
+	elif cqd = 'l3tb':
+		pass
+	elif cqd = 'l3tb':
+		pass
+
 
 dispatcher.add_handler(CommandHandler('start', main_menu))
 
