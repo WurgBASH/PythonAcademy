@@ -205,15 +205,6 @@ def cancel_testing(bot,update):
 	update.effective_message.reply_text('Тест завершено')
 	return ConversationHandler.END
 
-test2_conv_handler = ConversationHandler(
-        entry_points=[CallbackQueryHandler(callback_query_handler)],
-        states={
-            LS1_TEST1: [CallbackQueryHandler(lesson2_test_handler, pass_user_data=True)],
-            LS1_TEST2: [CallbackQueryHandler(lesson2_test_handler, pass_user_data=True)],
-        },
-        fallbacks=[CommandHandler('cancel_testing', cancel_testing)]
-)
-
 def callback_query_handler(bot, update):
 	cqd = update.callback_query.data
 	if cqd == 'l2tb':
@@ -221,7 +212,7 @@ def callback_query_handler(bot, update):
         [telegram.InlineKeyboardButton("Інтерпретована мова", callback_data="r_l2t11"),
          telegram.InlineKeyboardButton("Компільована мова", callback_data="f_l2t11")]]
 		update.effective_message.reply_text('Python - це?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
-		
+
 		return LS1_TEST1
 	elif cqd == 'l3tb':
 		pass
@@ -251,6 +242,17 @@ def callback_query_handler(bot, update):
 		pass
 	elif cqd == 'l3tb':
 		pass
+
+
+test2_conv_handler = ConversationHandler(
+        entry_points=[CallbackQueryHandler(callback_query_handler)],
+        states={
+            LS1_TEST1: [CallbackQueryHandler(lesson2_test_handler, pass_user_data=True)],
+            LS1_TEST2: [CallbackQueryHandler(lesson2_test_handler, pass_user_data=True)],
+        },
+        fallbacks=[CommandHandler('cancel_testing', cancel_testing)]
+)
+
 
 dispatcher.add_handler(test2_conv_handler)
 dispatcher.add_handler(CommandHandler('start', main_menu))
