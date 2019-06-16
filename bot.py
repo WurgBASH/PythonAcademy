@@ -124,7 +124,7 @@ dispatcher.add_handler(testing.test2_conv_handler)
 dispatcher.add_handler(CommandHandler('start', main_menu))
 dispatcher.add_handler(MessageHandler(Filters.text, handle_message))
 dispatcher.add_handler(CallbackQueryHandler(lessons_query_handler))
-
+dispatcher.add_handler(CallbackQueryHandler(testing.callback_query_handler))
 if __name__ == '__main__':
 	#--------------------------------
 	# updater.start_polling()
