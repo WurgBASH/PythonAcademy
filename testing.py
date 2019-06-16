@@ -2,7 +2,7 @@ from telegram.ext import CommandHandler, MessageHandler, Filters, Updater,Callba
 import telegram
 from telegram import ReplyKeyboardMarkup
 
-LS1_TEST1, LS1_TEST2, LS1_TEST3 = range(4)
+LS1_TEST1, LS1_TEST2, LS1_TEST3 = range(3)
 LS2_TEST1, LS2_TEST2, LS2_TEST3, LS2_TEST4 = range(4)
 LS3_TEST1, LS3_TEST2, LS3_TEST3, LS3_TEST4 = range(4)
 
