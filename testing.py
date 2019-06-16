@@ -35,15 +35,15 @@ def lesson2_test_handler(bot,update,user_data):
          telegram.InlineKeyboardButton("Ні", callback_data="f_l2t3")]]
 
 	if query_data == 'r_l2t1':
-		update.effective_message.reply_text('Ви відповили вірно \nЧи потрібно вказувати тип даних при створенні змінної?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		update.effective_message.reply_text('Ви відповили вірно \nЧи потрібно вказувати тип даних при створенні змінної?',reply_markup=telegram.InlineKeyboardMarkup(button_list1))
 		user_data['1'] = True
 		return LS1_TEST2
 	elif query_data == 'f_l2t1':
-		update.effective_message.reply_text('Ви відповили невірно \nЧи потрібно вказувати тип даних при створенні змінної?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		update.effective_message.reply_text('Ви відповили невірно \nЧи потрібно вказувати тип даних при створенні змінної?',reply_markup=telegram.InlineKeyboardMarkup(button_list1))
 		user_data['1'] = False
 		return LS1_TEST2
 	elif query_data == 'r_l2t2':
-		update.effective_message.reply_text('Ви відповили вірно \nЧи можна множити рядки в Python?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		update.effective_message.reply_text('Ви відповили вірно \nЧи можна множити рядки в Python?',reply_markup=telegram.InlineKeyboardMarkup(button_list2))
 		user_data['2'] = True
 		return LS1_TEST3
 	elif query_data == 'f_l2t2':
