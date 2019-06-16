@@ -30,7 +30,7 @@ def lesson2_test_handler(bot,update,user_data):
         [telegram.InlineKeyboardButton("Так", callback_data="r_l2t2"),
          telegram.InlineKeyboardButton("Ні", callback_data="f_l2t2")]]
 
-    button_list2 = [
+	button_list2 = [
         [telegram.InlineKeyboardButton("Так", callback_data="r_l2t3"),
          telegram.InlineKeyboardButton("Ні", callback_data="f_l2t3")]]
 
