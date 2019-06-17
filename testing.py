@@ -937,7 +937,7 @@ def callback_query_handler(bot, update):
         [telegram.InlineKeyboardButton("Компільована мова", callback_data="f_l2t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('Python - це?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
-		sendStatisticJSON(2)
+		sendStatisticJSON(1)
 		return LS1_TEST1
 	elif cqd == 'l3tb':
 		bot.send_message(chat_id=update.callback_query.message.chat_id, text=msg,parse_mode=telegram.ParseMode.HTML, reply_markup=kb_markup) 
