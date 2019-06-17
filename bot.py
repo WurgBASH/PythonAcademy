@@ -75,6 +75,12 @@ def sendJSON(update, bot):
 		headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 		r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONfromBot', data=json.dumps(data), headers=headers)
 
+def sendStatisticJSON(lesson){
+	data = {'lesson_id':lesson}
+	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+	r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONBOTfromBot', data=json.dumps(data), headers=headers)	
+}
+
 def sendingAllLessons(bot,update):
 	kb = [[telegram.KeyboardButton('Повернутися до головного меню')]]
 	kb_markup = telegram.ReplyKeyboardMarkup(kb, resize_keyboard=True)
@@ -118,7 +124,10 @@ def sendingAdditionalLinks(bot,update):
 	sendJSON(tmp,True)
 
 def lessons_query_handler(bot, update):
-	pass
+	cqd = update.callback_query.data
+	if cqd == 'l1':
+		sendStatisticJSON(1)
+
 
 #--------------------------------------------------
 

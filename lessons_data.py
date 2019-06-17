@@ -18,7 +18,7 @@ lessons_url = ['https://telegra.ph/YAk-vstanoviti-Python-05-13',
 'https://telegra.ph/Robota-z-bazoyu-danih-SQLIte-06-15'
 ]
 
-lesson1_button = telegram.InlineKeyboardButton(text='Як встановити Python?',url=lessons_url[0])
+lesson1_button = telegram.InlineKeyboardButton(text='Як встановити Python?',url=lessons_url[0],callback_data='l1')
 lesson2_button = telegram.InlineKeyboardButton(text='Основи Python',url=lessons_url[1])
 lesson3_button = telegram.InlineKeyboardButton(text='Списки в Python',url=lessons_url[2])
 lesson4_button = telegram.InlineKeyboardButton(text='Кортежі в Python',url=lessons_url[3])
