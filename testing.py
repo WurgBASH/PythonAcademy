@@ -25,7 +25,7 @@ LS15_TEST1, LS15_TEST2, LS15_TEST3, LS15_TEST4 = 56,57,58,59
 def sendStatisticJSON(lesson):
 	data = {'lesson_id':lesson}
 	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-	r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONBOTfromBot', data=json.dumps(data), headers=headers)	
+	r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONLessons', data=json.dumps(data), headers=headers)	
 
 def checkingWrite3(user_data):
 	s = ''
