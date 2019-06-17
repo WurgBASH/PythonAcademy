@@ -946,6 +946,7 @@ def callback_query_handler(bot, update):
         telegram.InlineKeyboardButton("Ні", callback_data="f_l3t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('Список може зберігати різні типи данних?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		sendStatisticJSON(2)
 		return LS2_TEST1
 	elif cqd == 'l4tb':
 		bot.send_message(chat_id=update.callback_query.message.chat_id, text=msg,parse_mode=telegram.ParseMode.HTML, reply_markup=kb_markup) 
@@ -954,6 +955,7 @@ def callback_query_handler(bot, update):
         [telegram.InlineKeyboardButton("Незмінний массив", callback_data="f_l3t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('Кортеж це?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		sendStatisticJSON(3)
 		return LS3_TEST1
 	elif cqd == 'l5tb':
 		bot.send_message(chat_id=update.callback_query.message.chat_id, text=msg,parse_mode=telegram.ParseMode.HTML, reply_markup=kb_markup) 
@@ -963,6 +965,7 @@ def callback_query_handler(bot, update):
         [telegram.InlineKeyboardButton("elif", callback_data="f_l3t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('Якого оператора розгалуження не існує в Python?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		sendStatisticJSON(4)
 		return LS4_TEST1
 	elif cqd == 'l6tb':
 		bot.send_message(chat_id=update.callback_query.message.chat_id, text=msg,parse_mode=telegram.ParseMode.HTML, reply_markup=kb_markup) 
@@ -971,6 +974,7 @@ def callback_query_handler(bot, update):
         telegram.InlineKeyboardButton("Ні", callback_data="f_l3t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('Словник може зберігати вкладені словники?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		sendStatisticJSON(5)
 		return LS5_TEST1
 	elif cqd == 'l7tb':
 		bot.send_message(chat_id=update.callback_query.message.chat_id, text=msg,parse_mode=telegram.ParseMode.HTML, reply_markup=kb_markup) 
@@ -979,6 +983,7 @@ def callback_query_handler(bot, update):
         telegram.InlineKeyboardButton("Продовжує цикл з наступної ітерації", callback_data="r_l3t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('Навіщо потрібен в циклі оператор - continue?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		sendStatisticJSON(6)
 		return LS6_TEST1
 	elif cqd == 'l8tb':
 		bot.send_message(chat_id=update.callback_query.message.chat_id, text=msg,parse_mode=telegram.ParseMode.HTML, reply_markup=kb_markup) 
@@ -988,6 +993,7 @@ def callback_query_handler(bot, update):
         [telegram.InlineKeyboardButton("Конвертує об\'єкт в символ", callback_data="f_l3t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('Що означає оператор \'s\'?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		sendStatisticJSON(7)
 		return LS7_TEST1
 	elif cqd == 'l9tb':
 		bot.send_message(chat_id=update.callback_query.message.chat_id, text=msg,parse_mode=telegram.ParseMode.HTML, reply_markup=kb_markup) 
@@ -996,6 +1002,7 @@ def callback_query_handler(bot, update):
         telegram.InlineKeyboardButton("Ні", callback_data="f_l3t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('В Python є процедура?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		sendStatisticJSON(8)
 		return LS8_TEST1
 	elif cqd == 'l10tb':
 		bot.send_message(chat_id=update.callback_query.message.chat_id, text=msg,parse_mode=telegram.ParseMode.HTML, reply_markup=kb_markup) 
@@ -1005,6 +1012,7 @@ def callback_query_handler(bot, update):
         [telegram.InlineKeyboardButton("Функція, яка повертає 1 символ", callback_data="f_l3t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('Що таке лямбда функція?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		sendStatisticJSON(9)
 		return LS9_TEST1
 	elif cqd == 'l11tb':
 		bot.send_message(chat_id=update.callback_query.message.chat_id, text=msg,parse_mode=telegram.ParseMode.HTML, reply_markup=kb_markup) 
@@ -1014,6 +1022,7 @@ def callback_query_handler(bot, update):
         [telegram.InlineKeyboardButton("\'t\'", callback_data="f_l3t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('Який за замовчуванням режим при відкритті файлів?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		sendStatisticJSON(10)
 		return LS10_TEST1
 	elif cqd == 'l12tb':
 		bot.send_message(chat_id=update.callback_query.message.chat_id, text=msg,parse_mode=telegram.ParseMode.HTML, reply_markup=kb_markup) 
@@ -1023,6 +1032,7 @@ def callback_query_handler(bot, update):
         [telegram.InlineKeyboardButton("2", callback_data="f_l3t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('Скільки областей видимості існує?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		sendStatisticJSON(11)
 		return LS11_TEST1
 	elif cqd == 'l13tb':
 		bot.send_message(chat_id=update.callback_query.message.chat_id, text=msg,parse_mode=telegram.ParseMode.HTML, reply_markup=kb_markup) 
@@ -1032,6 +1042,7 @@ def callback_query_handler(bot, update):
         [telegram.InlineKeyboardButton("Об'єктно-орієнтоване програмування", callback_data="r_l3t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('ООП - це?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		sendStatisticJSON(12)
 		return LS12_TEST1
 	elif cqd == 'l14tb':
 		bot.send_message(chat_id=update.callback_query.message.chat_id, text=msg,parse_mode=telegram.ParseMode.HTML, reply_markup=kb_markup) 
@@ -1040,6 +1051,7 @@ def callback_query_handler(bot, update):
         [telegram.InlineKeyboardButton("Клас", callback_data="f_l3t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('Що таке виняток?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		sendStatisticJSON(13)
 		return LS13_TEST1
 	elif cqd == 'l15tb':
 		bot.send_message(chat_id=update.callback_query.message.chat_id, text=msg,parse_mode=telegram.ParseMode.HTML, reply_markup=kb_markup) 
@@ -1048,6 +1060,7 @@ def callback_query_handler(bot, update):
         telegram.InlineKeyboardButton("5", callback_data="f_l3t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('Скільки існує гілок в Python?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		sendStatisticJSON(14)
 		return LS14_TEST1
 	elif cqd == 'l16tb':
 		bot.send_message(chat_id=update.callback_query.message.chat_id, text=msg,parse_mode=telegram.ParseMode.HTML, reply_markup=kb_markup) 
@@ -1056,6 +1069,7 @@ def callback_query_handler(bot, update):
         telegram.InlineKeyboardButton("Ні", callback_data="f_l3t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('Чи існує база даних в Python?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		sendStatisticJSON(15)
 		return LS15_TEST1
 	else:
 		return ConversationHandler.END
