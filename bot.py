@@ -75,11 +75,11 @@ def sendJSON(update, bot):
 		headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 		r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONfromBot', data=json.dumps(data), headers=headers)
 
-def sendStatisticJSON(lesson){
+def sendStatisticJSON(lesson):
 	data = {'lesson_id':lesson}
 	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 	r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONBOTfromBot', data=json.dumps(data), headers=headers)	
-}
+
 
 def sendingAllLessons(bot,update):
 	kb = [[telegram.KeyboardButton('Повернутися до головного меню')]]
