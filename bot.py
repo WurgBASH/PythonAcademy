@@ -43,6 +43,7 @@ def handle_message(bot, update):
 	elif update.message.text == 'Повернутися до головного меню':
 		sendJSON(update,False)
 		main_menu(bot, update)
+		
 	else:
 		request = apiai.ApiAI('a60c7793525a40ac9b5876bfef6590d3').text_request() 
 		request.lang = 'ru' 
@@ -119,16 +120,19 @@ def sendingAdditionalLinks(bot,update):
 def lessons_query_handler(bot, update):
 	pass
 
+#--------------------------------------------------
 
-dispatcher.add_handler(testing.test2_conv_handler)
+dispatcher.add_handler(testing.test_conv_handler)
+
+#--------------------------------------------------
 dispatcher.add_handler(CommandHandler('start', main_menu))
 dispatcher.add_handler(MessageHandler(Filters.text, handle_message))
 dispatcher.add_handler(CallbackQueryHandler(lessons_query_handler))
 dispatcher.add_handler(CallbackQueryHandler(testing.callback_query_handler))
 if __name__ == '__main__':
 	#--------------------------------
-	# updater.start_polling()
-	# updater.idle()
+	#updater.start_polling()
+	#updater.idle()
 	#--------------------------------
 	updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
 	updater.bot.set_webhook("https://python1academy.herokuapp.com/" + TOKEN)
