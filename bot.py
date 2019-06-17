@@ -75,12 +75,6 @@ def sendJSON(update, bot):
 		headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 		r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONfromBot', data=json.dumps(data), headers=headers)
 
-def sendStatisticJSON(lesson):
-	data = {'lesson_id':lesson}
-	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-	r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONBOTfromBot', data=json.dumps(data), headers=headers)	
-
-
 def sendingAllLessons(bot,update):
 	kb = [[telegram.KeyboardButton('Повернутися до головного меню')]]
 	kb_markup = telegram.ReplyKeyboardMarkup(kb, resize_keyboard=True)
@@ -123,12 +117,6 @@ def sendingAdditionalLinks(bot,update):
 	tmp.message.text= 'Відправив посилання'
 	sendJSON(tmp,True)
 
-def lessons_query_handler(bot, update):
-	cqd = update.callback_query.data
-	if cqd == 'l1':
-		sendStatisticJSON(1)
-
-
 #--------------------------------------------------
 
 dispatcher.add_handler(testing.test_conv_handler)
@@ -136,13 +124,12 @@ dispatcher.add_handler(testing.test_conv_handler)
 #--------------------------------------------------
 dispatcher.add_handler(CommandHandler('start', main_menu))
 dispatcher.add_handler(MessageHandler(Filters.text, handle_message))
-dispatcher.add_handler(CallbackQueryHandler(lessons_query_handler))
 dispatcher.add_handler(CallbackQueryHandler(testing.callback_query_handler))
 if __name__ == '__main__':
 	#--------------------------------
-	#updater.start_polling()
-	#updater.idle()
-	#--------------------------------
-	updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
-	updater.bot.set_webhook("https://python1academy.herokuapp.com/" + TOKEN)
+	updater.start_polling()
 	updater.idle()
+	#--------------------------------
+	#updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
+	#updater.bot.set_webhook("https://python1academy.herokuapp.com/" + TOKEN)
+	#updater.idle()

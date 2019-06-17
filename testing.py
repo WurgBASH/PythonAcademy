@@ -1,6 +1,8 @@
 from telegram.ext import CommandHandler, MessageHandler, Filters, Updater,CallbackQueryHandler,RegexHandler,ConversationHandler,InlineQueryHandler
 import telegram
 from telegram import ReplyKeyboardMarkup
+import requests 
+import json
 
 LS1_TEST1, LS1_TEST2, LS1_TEST3 = 1,2,3
 LS2_TEST1, LS2_TEST2, LS2_TEST3, LS2_TEST4 = 4,5,6,7
@@ -20,6 +22,10 @@ LS13_TEST1, LS13_TEST2, LS13_TEST3, LS13_TEST4 = 48,49,50,51
 LS14_TEST1, LS14_TEST2, LS14_TEST3, LS14_TEST4 = 52,53,54,55
 LS15_TEST1, LS15_TEST2, LS15_TEST3, LS15_TEST4 = 56,57,58,59
 
+def sendStatisticJSON(lesson):
+	data = {'lesson_id':lesson}
+	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+	r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONBOTfromBot', data=json.dumps(data), headers=headers)	
 
 def checkingWrite3(user_data):
 	s = ''
@@ -931,6 +937,7 @@ def callback_query_handler(bot, update):
         [telegram.InlineKeyboardButton("Компільована мова", callback_data="f_l2t1")],
         [telegram.InlineKeyboardButton("Завершити тест", callback_data="testend")]]
 		update.effective_message.reply_text('Python - це?',reply_markup=telegram.InlineKeyboardMarkup(button_list))
+		sendStatisticJSON(2)
 		return LS1_TEST1
 	elif cqd == 'l3tb':
 		bot.send_message(chat_id=update.callback_query.message.chat_id, text=msg,parse_mode=telegram.ParseMode.HTML, reply_markup=kb_markup) 
