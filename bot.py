@@ -17,6 +17,12 @@ dispatcher = updater.dispatcher
 translator = Translator()
 
 
+def start_handler(bot, update):
+	data = {'user_id':update.message.chat_id,'user_name':update.message.chat.username,'first_name': update.message.chat.first_name}
+	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+	r = requests.post(url = 'https://flaskappprogram.herokuapp.com/newUserInBot', data=json.dumps(data), headers=headers)
+	main_menu()
+
 def main_menu(bot, update):
 	kb = [[telegram.KeyboardButton('Список уроків')],
 			[telegram.KeyboardButton('Тестування')],
@@ -122,7 +128,7 @@ def sendingAdditionalLinks(bot,update):
 dispatcher.add_handler(testing.test_conv_handler)
 
 #--------------------------------------------------
-dispatcher.add_handler(CommandHandler('start', main_menu))
+dispatcher.add_handler(CommandHandler('start', start_handler))
 dispatcher.add_handler(MessageHandler(Filters.text, handle_message))
 dispatcher.add_handler(CallbackQueryHandler(testing.callback_query_handler))
 if __name__ == '__main__':
