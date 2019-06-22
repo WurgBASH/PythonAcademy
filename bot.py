@@ -21,7 +21,7 @@ def start_handler(bot, update):
 	data = {'user_id':update.message.chat_id,'user_name':update.message.chat.username,'first_name': update.message.chat.first_name}
 	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 	r = requests.post(url = 'https://flaskappprogram.herokuapp.com/newUserInBot', data=json.dumps(data), headers=headers)
-	main_menu()
+	main_menu(bot, update)
 
 def main_menu(bot, update):
 	kb = [[telegram.KeyboardButton('Список уроків')],
