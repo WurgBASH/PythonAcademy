@@ -24,9 +24,6 @@ def start_handler(bot, update):
 	main_menu(bot, update)
 
 def main_menu(bot, update):
-	bot.deleteMessage(update.message.chat_id, update.message.message_id-2)
-	bot.deleteMessage(update.message.chat_id, update.message.message_id-1)
-	bot.deleteMessage(update.message.chat_id, update.message.message_id)
 	kb = [[telegram.KeyboardButton('Список уроків')],
 			[telegram.KeyboardButton('Тестування')],
 			[telegram.KeyboardButton('Посилання на додаткові матеріали')]]
@@ -85,9 +82,6 @@ def sendJSON(update, bot):
 		r = requests.post(url = 'https://flaskappprogram.herokuapp.com/getJSONfromBot', data=json.dumps(data), headers=headers)
 
 def sendingAllLessons(bot,update):
-	bot.deleteMessage(update.message.chat_id, update.message.message_id-2)
-	bot.deleteMessage(update.message.chat_id, update.message.message_id-1)
-	bot.deleteMessage(update.message.chat_id, update.message.message_id)
 	kb = [[telegram.KeyboardButton('Повернутися до головного меню')]]
 	kb_markup = telegram.ReplyKeyboardMarkup(kb, resize_keyboard=True)
 	msg = '<b>Натисни на урок, який ти хочеш вивчити</b>\n'
@@ -102,9 +96,6 @@ def sendingAllLessons(bot,update):
 
 
 def sendingTestingMenu(bot,update):
-	bot.deleteMessage(update.message.chat_id, update.message.message_id-2)
-	bot.deleteMessage(update.message.chat_id, update.message.message_id-1)
-	bot.deleteMessage(update.message.chat_id, update.message.message_id)
 	kb = [[telegram.KeyboardButton('Повернутися до головного меню')]]
 	kb_markup = telegram.ReplyKeyboardMarkup(kb, resize_keyboard=True)
 	msg = '<b>Натисни на тест, який ти хочеш пройти</b>\n'
@@ -118,9 +109,6 @@ def sendingTestingMenu(bot,update):
 	sendJSON(tmp,True)
 
 def sendingAdditionalLinks(bot,update):
-	bot.deleteMessage(update.message.chat_id, update.message.message_id-2)
-	bot.deleteMessage(update.message.chat_id, update.message.message_id-1)
-	bot.deleteMessage(update.message.chat_id, update.message.message_id)
 	kb = [[telegram.KeyboardButton('Повернутися до головного меню')]]
 	kb_markup = telegram.ReplyKeyboardMarkup(kb, resize_keyboard=True)
 	
