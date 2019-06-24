@@ -54,9 +54,10 @@ def handle_message(bot, update):
 		request = apiai.ApiAI('a60c7793525a40ac9b5876bfef6590d3').text_request() 
 		request.lang = 'ru' 
 		request.session_id = 'BatlabAIBot' 
-		request.query = update.message.text 
+		request.query = translator.translate(update.message.text , dest='ru').text
 		responseJson = json.loads(request.getresponse().read().decode('utf-8'))
 		response = responseJson['result']['fulfillment']['speech']
+
 		msg = translator.translate(response, dest='ukrainian',src='ru').text
 		if response:
 			bot.send_message(chat_id=update.message.chat_id, text=msg)
